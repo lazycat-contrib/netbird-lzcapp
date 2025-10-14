@@ -1,0 +1,37 @@
+lzc-sdk-version: "0.1"
+name: Netbird
+package: community.lazycat.app.netbird
+version: 0.59.5
+min_os_version: 1.3.8
+description: NetBird 将基于 WireGuard® 的覆盖网络与零信任网络访问相结合，提供统一的开源平台，实现可靠、安全的连接
+homepage: https://netbird.io
+author: netbird
+application:
+  subdomain: netbird
+  background_task: true
+
+  public_path:
+    - /
+
+  upstreams:
+    - location: /
+      backend: file:///lzcapp/pkg/content/
+
+services:
+  netbird:
+    container_name: netbird
+    # netbirdio/netbird:0.59.5
+    image: registry.lazycat.cloud/czyt/netbirdio/netbird:9f39500c9960c3c0
+    environment:
+      - NB_SETUP_KEY={{.U.nb_setup_key}}
+    binds:
+      - /lzcapp/var/netbird:/var/lib/netbird
+    network_mode: host
+
+locales:
+  zh:
+    name: "Netbird"
+    description: "NetBird combines a WireGuard®-based overlay network with Zero Trust Network Access, providing a unified open source platform for reliable and secure connectivity"
+  en:
+    name: "Netbird"
+    description: "Lazycat device led control helper"

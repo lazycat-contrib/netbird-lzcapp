@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>NetBird - Open Source Zero Trust Networking Platform</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI",
+                    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                    sans-serif;
+                line-height: 1.6;
+                color: #1a1a1a;
+                background: #ffffff;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            /* Header */
+            header {
+                background: #ffffff;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 0;
+            }
+
+            .logo {
+                font-size: 24px;
+                font-weight: 700;
+                color: #2563eb;
+            }
+
+            .lang-switch {
+                background: #f3f4f6;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: 500;
+                transition: all 0.3s;
+            }
+
+            .lang-switch:hover {
+                background: #e5e7eb;
+            }
+
+            /* Hero Section */
+            .hero {
+                text-align: center;
+                padding: 80px 20px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+                font-weight: 800;
+                margin-bottom: 20px;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 20px;
+                margin-bottom: 30px;
+                opacity: 0.95;
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .cta-button {
+                display: inline-block;
+                background: white;
+                color: #667eea;
+                padding: 14px 32px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 16px;
+                transition: all 0.3s;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            /* Features Section */
+            .features {
+                padding: 80px 20px;
+                background: #f9fafb;
+            }
+
+            .section-title {
+                text-align: center;
+                font-size: 36px;
+                font-weight: 700;
+                margin-bottom: 50px;
+                color: #1a1a1a;
+            }
+
+            .feature-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+                margin-top: 40px;
+            }
+
+            .feature-card {
+                background: white;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                transition: all 0.3s;
+            }
+
+            .feature-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+            }
+
+            .feature-icon {
+                width: 50px;
+                height: 50px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+                font-size: 24px;
+            }
+
+            .feature-card h3 {
+                font-size: 22px;
+                margin-bottom: 12px;
+                color: #1a1a1a;
+            }
+
+            .feature-card p {
+                color: #6b7280;
+                line-height: 1.7;
+            }
+
+            /* How It Works */
+            .how-it-works {
+                padding: 80px 20px;
+                background: white;
+            }
+
+            .steps {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 40px;
+                margin-top: 50px;
+            }
+
+            .step {
+                text-align: center;
+            }
+
+            .step-number {
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                font-weight: 700;
+                margin: 0 auto 20px;
+            }
+
+            .step h3 {
+                font-size: 20px;
+                margin-bottom: 12px;
+                color: #1a1a1a;
+            }
+
+            .step p {
+                color: #6b7280;
+            }
+
+            /* Tech Stack */
+            .tech-stack {
+                padding: 80px 20px;
+                background: #1f2937;
+                color: white;
+            }
+
+            .tech-stack .section-title {
+                color: white;
+            }
+
+            .tech-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 40px;
+            }
+
+            .tech-item {
+                background: rgba(255, 255, 255, 0.1);
+                padding: 12px 24px;
+                border-radius: 20px;
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            /* Footer */
+            footer {
+                background: #111827;
+                color: #9ca3af;
+                padding: 40px 20px;
+                text-align: center;
+            }
+
+            .footer-links {
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+            }
+
+            .footer-links a {
+                color: #9ca3af;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+            .footer-links a:hover {
+                color: #667eea;
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .hero h1 {
+                    font-size: 36px;
+                }
+
+                .hero p {
+                    font-size: 18px;
+                }
+
+                .section-title {
+                    font-size: 28px;
+                }
+
+                .feature-grid,
+                .steps {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .hidden {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="container">
+                <div class="logo">NetBird</div>
+                <button class="lang-switch" onclick="toggleLanguage()">
+                    <span id="langBtn">English</span>
+                </button>
+            </nav>
+        </header>
+
+        <!-- Chinese Content -->
+        <div id="zh-content">
+            <section class="hero">
+                <div class="container">
+                    <h1>开源零信任网络平台</h1>
+                    <p>
+                        基于 WireGuard®
+                        的安全私有网络，无需复杂配置，即刻连接您的所有设备
+                    </p>
+                    <a href="https://netbird.io" class="cta-button">立即开始</a>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="container">
+                    <h2 class="section-title">核心特性</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🔒</div>
+                            <h3>零信任安全</h3>
+                            <p>
+                                采用零信任网络架构，支持 SSO 单点登录和 MFA
+                                多因素认证，提供细粒度的访问控制，确保每个连接都经过验证和授权。
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>点对点连接</h3>
+                            <p>
+                                基于 WireGuard®
+                                的端到端加密隧道，设备间直接通信，无需中继服务器，提供最佳性能和最低延迟。
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h3>极简配置</h3>
+                            <p>
+                                无需打开端口、配置复杂防火墙规则或部署 VPN
+                                网关，几分钟内即可建立安全的私有网络。
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌐</div>
+                            <h3>跨平台支持</h3>
+                            <p>
+                                支持 Linux、Windows、macOS、iOS、Android
+                                等所有主流平台，一次配置，随处连接。
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔓</div>
+                            <h3>完全开源</h3>
+                            <p>
+                                100%
+                                开源项目，代码透明可审计，可自主部署或使用云托管服务，数据完全由您掌控。
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🚀</div>
+                            <h3>企业级功能</h3>
+                            <p>
+                                支持访问控制列表、网络路由、DNS
+                                管理、活动日志等企业级功能，满足各种规模组织的需求。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="how-it-works">
+                <div class="container">
+                    <h2 class="section-title">快速开始</h2>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h3>注册账户</h3>
+                            <p>
+                                访问 netbird.io 使用您的身份提供商（如
+                                Gmail、GitHub）快速注册
+                            </p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h3>安装客户端</h3>
+                            <p>在需要连接的设备上下载并安装 NetBird 客户端</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h3>自动连接</h3>
+                            <p>客户端自动建立加密隧道，设备即刻安全互联</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tech-stack">
+                <div class="container">
+                    <h2 class="section-title">技术架构</h2>
+                    <div class="tech-list">
+                        <div class="tech-item">WireGuard®</div>
+                        <div class="tech-item">WebRTC (Pion ICE)</div>
+                        <div class="tech-item">OIDC / OAuth 2.0</div>
+                        <div class="tech-item">Coturn</div>
+                        <div class="tech-item">Go</div>
+                        <div class="tech-item">React</div>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <div class="container">
+                    <div class="footer-links">
+                        <a href="https://netbird.io">官网</a>
+                        <a href="https://docs.netbird.io">文档</a>
+                        <a href="https://github.com/netbirdio/netbird"
+                            >GitHub</a
+                        >
+                        <a href="https://netbird.io/blog">博客</a>
+                    </div>
+                    <p>
+                        &copy; 2025 NetBird. 基于 WireGuard®
+                        技术构建的开源零信任网络平台。
+                    </p>
+                </div>
+            </footer>
+        </div>
+
+        <!-- English Content -->
+        <div id="en-content" class="hidden">
+            <section class="hero">
+                <div class="container">
+                    <h1>Open Source Zero Trust Networking</h1>
+                    <p>
+                        Secure private networks powered by WireGuard®. Connect
+                        all your devices without complex configuration.
+                    </p>
+                    <a href="https://netbird.io" class="cta-button"
+                        >Get Started</a
+                    >
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="container">
+                    <h2 class="section-title">Key Features</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🔒</div>
+                            <h3>Zero Trust Security</h3>
+                            <p>
+                                Built on Zero Trust principles with SSO, MFA,
+                                and granular access controls. Every connection
+                                is verified and authorized.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Peer-to-Peer</h3>
+                            <p>
+                                WireGuard®-based encrypted tunnels enable
+                                direct device-to-device communication for
+                                optimal performance and minimal latency.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h3>Zero Configuration</h3>
+                            <p>
+                                No port forwarding, complex firewall rules, or
+                                VPN gateways needed. Set up secure private
+                                networks in minutes.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌐</div>
+                            <h3>Cross-Platform</h3>
+                            <p>
+                                Native support for Linux, Windows, macOS, iOS,
+                                and Android. Configure once, connect everywhere.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔓</div>
+                            <h3>Fully Open Source</h3>
+                            <p>
+                                100% open source with transparent, auditable
+                                code. Self-host or use our cloud service. Your
+                                data, your control.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🚀</div>
+                            <h3>Enterprise Ready</h3>
+                            <p>
+                                Access control lists, network routing, DNS
+                                management, activity logs, and more for
+                                organizations of any size.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="how-it-works">
+                <div class="container">
+                    <h2 class="section-title">Quick Start</h2>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h3>Sign Up</h3>
+                            <p>
+                                Visit netbird.io and sign up using your identity
+                                provider like Gmail or GitHub
+                            </p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h3>Install Client</h3>
+                            <p>
+                                Download and install NetBird client on devices
+                                you want to connect
+                            </p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h3>Auto-Connect</h3>
+                            <p>
+                                Clients automatically establish encrypted
+                                tunnels and securely connect your devices
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tech-stack">
+                <div class="container">
+                    <h2 class="section-title">Technology Stack</h2>
+                    <div class="tech-list">
+                        <div class="tech-item">WireGuard®</div>
+                        <div class="tech-item">WebRTC (Pion ICE)</div>
+                        <div class="tech-item">OIDC / OAuth 2.0</div>
+                        <div class="tech-item">Coturn</div>
+                        <div class="tech-item">Go</div>
+                        <div class="tech-item">React</div>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <div class="container">
+                    <div class="footer-links">
+                        <a href="https://netbird.io">Website</a>
+                        <a href="https://docs.netbird.io">Documentation</a>
+                        <a href="https://github.com/netbirdio/netbird"
+                            >GitHub</a
+                        >
+                        <a href="https://netbird.io/blog">Blog</a>
+                    </div>
+                    <p>
+                        &copy; 2025 NetBird. Open source Zero Trust networking
+                        platform powered by WireGuard®.
+                    </p>
+                </div>
+            </footer>
+        </div>
+
+        <script>
+            function toggleLanguage() {
+                const zhContent = document.getElementById("zh-content");
+                const enContent = document.getElementById("en-content");
+                const langBtn = document.getElementById("langBtn");
+
+                if (zhContent.classList.contains("hidden")) {
+                    zhContent.classList.remove("hidden");
+                    enContent.classList.add("hidden");
+                    langBtn.textContent = "English";
+                } else {
+                    zhContent.classList.add("hidden");
+                    enContent.classList.remove("hidden");
+                    langBtn.textContent = "中文";
+                }
+            }
+        </script>
+    </body>
+</html>

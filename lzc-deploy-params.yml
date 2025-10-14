@@ -1,0 +1,11 @@
+params:
+  - id: nb_setup_key
+    type: string
+    name: "netbird setup key"
+    description: "the netbird setup key, see https://docs.netbird.io/how-to/register-machines-using-setup-keys"
+
+locales:
+  zh:
+    nb_setup_key:
+      name: "netbird设置密钥"
+      description: "用于注册机器的netbird设置密钥，详见 https://docs.netbird.io/how-to/register-machines-using-setup-keys"
