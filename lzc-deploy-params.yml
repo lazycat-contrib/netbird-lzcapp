@@ -1,8 +1,9 @@
 params:
   - id: nb_setup_key
-    type: string
+    type: secret
     name: "netbird setup key"
     description: "the netbird setup key, see https://docs.netbird.io/how-to/register-machines-using-setup-keys"
+    optional: false
 
 locales:
   zh:
