@@ -1,11 +1,10 @@
 package: community.lazycat.app.netbird
-version: 0.59.5
+version: 0.78.2
 name: NetBird
 description: "NetBird 将基于 WireGuard 的覆盖网络与零信任网络访问相结合"
 homepage: https://netbird.io
 author: netbird
 min_os_version: 1.5.0
-
 locales:
   zh:
     name: "NetBird"

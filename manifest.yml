@@ -1,18 +1,16 @@
 application:
   subdomain: netbird
   background_task: true
-
   public_path:
     - /
-
   upstreams:
     - location: /
       backend: file:///lzcapp/pkg/content/
-
 services:
   netbird:
     # netbirdio/netbird:0.59.5
-    image: registry.lazycat.cloud/czyt/netbirdio/netbird:9f39500c9960c3c0
+    # upstream: docker.io/netbirdio/netbird:0.78.2
+    image: registry.lazycat.cloud/czyt/netbirdio/netbird:721c6b4199ed1d16
     environment:
       - NB_SETUP_KEY={{.U.nb_setup_key}}
     binds:
