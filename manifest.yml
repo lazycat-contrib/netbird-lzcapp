@@ -9,8 +9,8 @@ application:
 services:
   netbird:
     # netbirdio/netbird:0.59.5
-    # upstream: docker.io/netbirdio/netbird:0.81.5
-    image: registry.lazycat.cloud/czyt/netbirdio/netbird:dee9a7e75f928e2f
+    # upstream: docker.io/netbirdio/netbird:0.82.0
+    image: registry.lazycat.cloud/czyt/netbirdio/netbird:0b13864f5c09e0a6
     environment:
       - NB_SETUP_KEY={{.U.nb_setup_key}}
     binds:
